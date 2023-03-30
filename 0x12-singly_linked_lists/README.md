@@ -1,5 +1,4 @@
 # C -lists as a Data Structure
-# C -lists as a Data Structure
 #### This project introduces list as a type of data structure
 #### There are various types of list architcture, however, this project involves Singel-link list
 The following task were done and they include:
