@@ -1,8 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-
 #include "search_algos.h"
-
 /**
  * linear_search - searches for a n_v in an v_arr of
  * integers using the Linear search algorithm
