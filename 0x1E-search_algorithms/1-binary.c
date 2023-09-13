@@ -1,61 +1,37 @@
 #include "search_algos.h"
 
 /**
- * r_search - searches for a n_v in an v_arr of
- * integers using the Binary search algorithm
- *
- *
- * @v_arr: input v_arr
- * @vsize: vsize of the v_arr
- * @n_v: value tosearch in
- * Return: index of the number
- */
-int r_search(int *v_arr, size_t vsize, int n_v)
+  * binary_search - Searches for a value in a sorted array
+  * @array: A pointer to the first element of the array to search.
+  * @size: The number of elements in the array.
+  * @value: The value in the array to search for.
+  *
+  * Return: -1 if the value is null, Otherwise, the index
+  *
+  * Description: Prints the [sub]array
+  */
+int binary_search(int *array, size_t size, int value)
 {
-	size_t myhl = vsize / 2;
-	size_t i;
+	size_t x, lft, rght;
 
-	if (v_arr == NULL || vsize == 0)
+	if (array == NULL)
 		return (-1);
 
-	printf("Searching in v_arr");
+	for (lft = 0, rght = size - 1; rght >= lft;)
+	{
+		printf("Searching in array: ");
+		for (x = lft; x < rght; x++)
+			printf("%d, ", array[x]);
+		printf("%d\n", array[x]);
 
-	for (i = 0; i < vsize; i++)
-		printf("%s %d", (i == 0) ? ":" : ",", v_arr[i]);
+		x = lft + (rght - lft) / 2;
+		if (array[x] == value)
+			return (x);
+		if (array[x] > value)
+			rght = x - 1;
+		else
+			lft = x + 1;
+	}
 
-	printf("\n");
-
-	if (myhl && vsize % 2 == 0)
-		myhl--;
-
-	if (n_v == v_arr[myhl])
-		return ((int)myhl);
-
-	if (n_v < v_arr[myhl])
-		return (r_search(v_arr, myhl, n_v));
-
-	myhl++;
-
-	return (r_search(v_arr + myhl, vsize - myhl, n_v) + myhl);
-}
-
-/**
- * binary_search - calls to binary_search to return
- * the index of the number
- *
- * @v_arr: input v_arr
- * @vsize: vsize of the v_arr
- * @n_v: value tosearch in
- * Return: index of the number
- */
-int binary_search(int *v_arr, size_t vsize, int n_v)
-{
-	int v;
-
-	v = r_search(v_arr, vsize, n_v);
-
-	if (v >= 0 && v_arr[v] != n_v)
-		return (-1);
-
-	return (v);
+	return (-1);
 }
